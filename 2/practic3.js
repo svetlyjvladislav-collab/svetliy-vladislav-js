@@ -1,0 +1,9 @@
+let.x = 8;
+let.y = 4;
+let.c = "12";
+console.log(`${x} + ${y} = ${x + y}`);
+console.log(`${x} - ${y} = ${x - y}`);
+console.log(`${x} * ${y} = ${x * y}`);
+console.log(`${x} / ${y} = ${x / y}`);
+console.log(`${x} + ${c} = ${x + c}`);
+console.log(`${x} / ${c} = ${x / c}`);
