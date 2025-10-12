@@ -1,6 +1,6 @@
-let.x = 8;
-let.y = 4;
-let.c = "12";
+let x = 8;
+let y = 4;
+let c = "12";
 console.log(`${x} + ${y} = ${x + y}`);
 console.log(`${x} - ${y} = ${x - y}`);
 console.log(`${x} * ${y} = ${x * y}`);
