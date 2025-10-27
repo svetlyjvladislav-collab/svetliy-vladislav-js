@@ -1,0 +1,7 @@
+let num = parseInt(prompt("Введите целое положительное число:"));
+console.log("Делители числа " + num + ":");
+for (let divisor = 1; divisor <= num; divisor++) {
+ if (num % divisor === 0) {
+    console.log(divisor);
+ }
+}
