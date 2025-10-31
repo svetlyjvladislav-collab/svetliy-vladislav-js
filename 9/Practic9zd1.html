@@ -1,0 +1,22 @@
+import axios from 'axios';
+
+async function createUser(name, email, phone) {
+  try {
+    const userData = {
+      name: name,
+      email: email,
+      phone: phone
+    };
+
+    const response = await axios.post(
+      'https://jsonplaceholder.typicode.com/users',
+      userData
+    );
+
+    console.log('Пользователь создан:', response.data);
+    return response.data; // Возвращаем данные созданного пользователя
+  } catch (error) {
+    console.error('Ошибка при создании пользователя:', error);
+    throw error; // Перебрасываем ошибку для дальнейшей обработки
+  }
+}
