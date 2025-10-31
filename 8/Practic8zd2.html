@@ -1,0 +1,27 @@
+async function getPost(id = 1) { 
+    try {
+        const url = `https://jsonplaceholder.typicode.com/posts/${id}`;
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Ошибка получения поста: ${response.status}`);
+        }
+        const post = await response.json();
+        return post;
+    } catch (error) {
+        console.error('Ошибка при получении поста:', error.message);
+        return null;
+    }
+}
+
+getPost(5)
+    .then(post => {
+        if (post) {
+            console.log('Получен пост:', post);
+        }
+    });
+getPost()
+    .then(post => {
+        if (post) {
+            console.log('Получен пост по умолчанию:', post);
+        }
+    });
