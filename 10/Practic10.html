@@ -1,0 +1,105 @@
+class Transport {
+  constructor(color, material, manufacturer, maxSpeed) {
+    this.color = color;
+    this.material = material;
+    this.manufacturer = manufacturer;
+    this.maxSpeed = maxSpeed;
+  }
+
+  startEngine() {
+    console.log('Engine starting...');
+  }
+
+  // Вывести все поля
+  showCharacteristics() {
+    for (var prop in this) {
+      if (Object.prototype.hasOwnProperty.call(this, prop)) {
+        console.log(`${prop}: ${this[prop]}`);
+      }
+    }
+  }
+}
+
+// 1) Класс Boat, который не наследуется ни от кого
+class Boat {
+  constructor(color, material, maxSpeed) {
+    this.color = color;
+    this.material = material;
+    this.maxSpeed = maxSpeed;
+  }
+
+  sail() {
+    console.log('Плывём по волнам');
+  }
+}
+
+// 2) Класс Bus, который наследуется от Transport
+class Bus extends Transport {
+  constructor(color, material, manufacturer, maxSpeed, passengerCount) {
+    super(color, material, manufacturer, maxSpeed);
+    this.passengerCount = passengerCount;
+  }
+
+  drive() {
+    console.log(`Едем по маршруту с ${this.passengerCount} пассажирами`);
+  }
+}
+
+// 3) Переопределяем метод startEngine в классе Plane
+class Plane extends Transport {
+  constructor(color, material, manufacturer, maxSpeed, maxHeight) {
+    super(color, material, manufacturer, maxSpeed);
+    this.maxHeight = maxHeight;
+  }
+
+  startEngine() {
+    console.log('Турбины запускаются...');
+  }
+
+  fly() {
+    console.log('Flying...');
+  }
+}
+
+// Демонстрация работы всех классов
+
+console.log('🚤 Лодка');
+const boat = new Boat('синий', 'пластик', 50);
+boat.sail();
+console.log('Характеристики лодки:');
+console.log(`Цвет: ${boat.color}`);
+console.log(`Материал: ${boat.material}`);
+console.log(`Макс. скорость: ${boat.maxSpeed} км/ч`);
+
+console.log('\n🚌 Автобус');
+const bus = new Bus('желтый', 'металл', 'Mercedes', 120, 40);
+bus.showCharacteristics();
+bus.startEngine();
+bus.drive();
+
+console.log('\n✈️ Ту 144');
+const ty144 = new Plane('white', 'iron', 'Typolev', 1500, 12000);
+ty144.showCharacteristics();
+ty144.startEngine(); 
+ty144.fly();
+
+console.log('\n🚗 Четырка');
+class Car extends Transport {
+  constructor(color, material, manufacturer, maxSpeed, bassDolbit) {
+    super(color, material, manufacturer, maxSpeed);
+    this.bassDolbit = bassDolbit;
+  }
+
+  startEngine() {
+    super.startEngine();
+    console.log('Conditioner ready!');
+  }
+
+  ride() {
+    console.log('Riding...');
+  }
+}
+
+const chetyrka = new Car('white', 'iron', 'Lada', 150, true);
+chetyrka.showCharacteristics();
+chetyrka.ride();
